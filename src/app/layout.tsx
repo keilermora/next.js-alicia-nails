@@ -1,8 +1,9 @@
 import "./globals.css";
+import { ReactNode } from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Footer from "./_components/Footer";
-import Header from "./_components/Header";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,17 +12,18 @@ export const metadata: Metadata = {
   description: "¡Uñas hermosas en la comodidad de tu casa!",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+type RootLayoutProps = {
+  children: ReactNode;
+  modal: ReactNode;
+};
+
+export default async function RootLayout({ children, modal }: RootLayoutProps) {
   return (
     <html lang="en">
       <body className={inter.className}>
         <Header />
         <main>
-          <div id="modal-root"></div>
+          {modal}
           {children}
         </main>
         <Footer />

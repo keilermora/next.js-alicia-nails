@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import Button from "./_components/Button";
+import Button from "../components/Button";
 
 export default function GlobalError({
   error,
@@ -12,7 +12,7 @@ export default function GlobalError({
 }) {
   useEffect(() => {
     // Log the error to an error reporting service
-    console.error(error);
+    console.info(error);
   }, [error]);
 
   return (

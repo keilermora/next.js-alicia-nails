@@ -1,5 +1,5 @@
 import Nail from "../../Nail";
-import ColorModel from "../../ColorModel";
+import ColorModel from "../../../api/colors/ColorModel";
 
 interface SelectedColorCardProps {
   color: ColorModel;

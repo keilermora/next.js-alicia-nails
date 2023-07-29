@@ -1,10 +1,10 @@
 import SelectedColors from "./_components/SelectedColors";
-import getGreetingsMessage from "@/app/_utils/getGreetingsMessage";
-import ColorModel from "../ColorModel";
-import ColorsAPI from "../ColorsAPI";
+import getGreetingsMessage from "@/src/lib/getGreetingsMessage";
+import ColorModel from "../../api/colors/ColorModel";
 
 export default async function SelectedColorsPage() {
-  const colors: ColorModel[] = await ColorsAPI.getAvailableColors();
+  const response = await fetch(`${process.env.HOST}/api/colors/`);
+  const colors: ColorModel[] = await response.json();
   const greetingsMessage = getGreetingsMessage();
 
   return (

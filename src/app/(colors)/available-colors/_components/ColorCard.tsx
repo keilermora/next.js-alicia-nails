@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import classNames from "classnames";
-import ColorModel from "../../ColorModel";
+import ColorModel from "../../../api/colors/ColorModel";
 import Nail from "../../Nail";
 import useSelectColor from "./useSelectColor";
 

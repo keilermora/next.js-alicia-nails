@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import ColorModel from "../../ColorModel";
+import ColorModel from "../../../api/colors/ColorModel";
 import SelectedColorCard from "./SelectedColorCard";
 
 interface SelectedColorsProps {

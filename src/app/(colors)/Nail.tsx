@@ -1,4 +1,4 @@
-import ColorTypeEnum from "@/app/(colors)/ColorTypeEnum";
+import ColorTypeEnum from "./ColorTypeEnum";
 import styles from "./Nail.module.css";
 
 interface NailProps {

@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import Loader from "@/app/_components/Loader";
+import Loader from "@/src/components/Loader";
 import AvailableColorList from "./_components/AvailableColorList";
 import SelectColorProvider from "./_components/SelectColorProvider";
 import SendColorsButton from "./_components/SendColorsButton";
