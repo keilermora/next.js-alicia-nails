@@ -2,9 +2,6 @@ import { NextResponse } from "next/server";
 import { GoogleSpreadsheet } from "google-spreadsheet";
 import ColorModel from "./ColorModel";
 
-export const revalidate = 120;
-export const fetchCache = "auto";
-
 export async function GET() {
   const doc = new GoogleSpreadsheet(process.env.GOOGLE_DOC_ID as string, {
     apiKey: process.env.GOOGLE_PRIVATE_KEY as string,

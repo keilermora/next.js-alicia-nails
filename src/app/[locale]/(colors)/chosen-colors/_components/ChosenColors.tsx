@@ -1,14 +1,14 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import ColorModel from "../../../api/colors/ColorModel";
-import SelectedColorCard from "./SelectedColorCard";
+import ColorModel from "@/src/app/api/colors/ColorModel";
+import ChosenColorCard from "./ChosenColorCard";
 
-interface SelectedColorsProps {
+interface ChosenColorsProps {
   colors: ColorModel[];
 }
 
-export default function SelectedColors({ colors }: SelectedColorsProps) {
+export default function ChosenColors({ colors }: ChosenColorsProps) {
   const searchParams = useSearchParams();
 
   const idsParam: string = searchParams.get("ids") || "";
@@ -20,7 +20,7 @@ export default function SelectedColors({ colors }: SelectedColorsProps) {
   return (
     <div className="grid justify-center mt-8">
       {filteredColors.map((color) => (
-        <SelectedColorCard key={color.id} color={color} />
+        <ChosenColorCard key={color.id} color={color} />
       ))}
     </div>
   );

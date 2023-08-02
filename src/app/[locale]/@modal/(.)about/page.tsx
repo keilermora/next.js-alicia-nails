@@ -2,8 +2,8 @@
 
 import { useRouter } from "next/navigation";
 import AboutPage from "../../(misc)/about/page";
-import Button from "@/src/components/Button";
-import Modal from "@/src/components/Modal";
+import Button from "@/src/app/components/Button";
+import Modal from "@/src/app/components/Modal";
 
 export default function AboutModal() {
   const router = useRouter();

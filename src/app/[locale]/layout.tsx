@@ -2,8 +2,9 @@ import "./globals.css";
 import { ReactNode } from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Header from "@/src/app/components/Header";
+import Footer from "@/src/app/components/Footer";
+import I18nProvider from "@/src/providers/i18n-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,14 +20,16 @@ type RootLayoutProps = {
 
 export default async function RootLayout({ children, modal }: RootLayoutProps) {
   return (
-    <html lang="en">
+    <html>
       <body className={inter.className}>
-        <Header />
-        <main>
-          {modal}
-          {children}
-        </main>
-        <Footer />
+        <I18nProvider>
+          <Header />
+          <main>
+            {modal}
+            {children}
+          </main>
+          <Footer />
+        </I18nProvider>
       </body>
     </html>
   );

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { useScopedI18n } from "@/src/locales/client";
 import Button from "../components/Button";
 
 export default function Error({
@@ -10,6 +11,8 @@ export default function Error({
   error: Error;
   reset: () => void;
 }) {
+  const scopedT = useScopedI18n("pages.error");
+
   useEffect(() => {
     // Log the error to an error reporting service
     console.error(error);
@@ -17,11 +20,8 @@ export default function Error({
 
   return (
     <div className="h-full flex flex-col justify-center text-center">
-      <h2 className="text-lg font-bold">Algo salió mal...</h2>
-      <p className="mt-2">
-        No estamos seguros de lo que pudo haber pasado. Tal vez si lo
-        intentáramos de nuevo...
-      </p>
+      <h2 className="text-lg font-bold">{scopedT("title")}.</h2>
+      <p className="mt-2">{scopedT("reason")}</p>
       <div className="mt-10">
         <Button
           onClick={() => {
@@ -29,7 +29,7 @@ export default function Error({
             () => reset();
           }}
         >
-          Intentar de nuevo
+          {scopedT("resetButton")}
         </Button>
       </div>
     </div>

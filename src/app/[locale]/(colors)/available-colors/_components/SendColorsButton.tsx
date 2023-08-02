@@ -1,6 +1,6 @@
 "use client";
 
-import Button from "@/src/components/Button";
+import Button from "@/src/app/components/Button";
 import useSelectColor from "./useSelectColor";
 
 export default function SendColorsButton() {

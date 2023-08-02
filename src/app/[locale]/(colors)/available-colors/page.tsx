@@ -1,23 +1,21 @@
 import { Suspense } from "react";
-import Loader from "@/src/components/Loader";
+import { getScopedI18n } from "@/src/locales/server";
+import Loader from "@/src/app/components/Loader";
 import AvailableColorList from "./_components/AvailableColorList";
 import SelectColorProvider from "./_components/SelectColorProvider";
 import SendColorsButton from "./_components/SendColorsButton";
+import WelcomeModal from "./_components/WelcomeModal";
 
 export default async function AvailableColorsPage() {
+  const scopedT = await getScopedI18n("pages.availableColors");
+
   return (
     <>
+      <WelcomeModal />
       <section className="h-full flex flex-col">
-        <h2>Elige tus tonos favoritos</h2>
-        <p>
-          Explora nuestra amplia gama de colores de esmaltes de uñas y
-          selecciona los tonos que reflejen tu estilo.
-        </p>
-        <p>
-          Para asegurarte de que veas los colores lo más fiel posible a la
-          realidad, te recomendamos subir el brillo de tu dispositivo para
-          disfrutar de una experiencia de selección de colores excepcional.
-        </p>
+        <h2>{scopedT("title")}</h2>
+        <p>{scopedT("description")}</p>
+        <p>{scopedT("suggestion")}</p>
         <SelectColorProvider>
           <SendColorsButton />
           <div className="h-full flex flex-wrap justify-center mt-8">

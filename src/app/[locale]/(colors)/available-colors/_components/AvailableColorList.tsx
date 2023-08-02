@@ -1,8 +1,10 @@
-import ColorModel from "../../../api/colors/ColorModel";
+import ColorModel from "@/src/app/api/colors/ColorModel";
 import ColorCard from "./ColorCard";
 
 export default async function AvailableColorList() {
-  const response = await fetch(`${process.env.HOST}/api/colors`);
+  const response = await fetch(`${process.env.HOST}/api/colors`, {
+    cache: "no-cache",
+  });
   const colors: ColorModel[] = await response.json();
 
   return (

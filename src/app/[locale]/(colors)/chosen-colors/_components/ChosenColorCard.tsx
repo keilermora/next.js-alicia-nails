@@ -1,11 +1,11 @@
 import Nail from "../../Nail";
-import ColorModel from "../../../api/colors/ColorModel";
+import ColorModel from "@/src/app/api/colors/ColorModel";
 
 interface SelectedColorCardProps {
   color: ColorModel;
 }
 
-export default function SelectedColorCard({ color }: SelectedColorCardProps) {
+export default function ChosenColorCard({ color }: SelectedColorCardProps) {
   return (
     <div className="flex items-center p-4">
       <Nail hex={color.hex} type={color.type} />
