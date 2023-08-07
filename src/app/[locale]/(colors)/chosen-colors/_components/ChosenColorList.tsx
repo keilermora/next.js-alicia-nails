@@ -8,7 +8,7 @@ interface ChosenColorsProps {
   colors: ColorModel[];
 }
 
-export default function ChosenColors({ colors }: ChosenColorsProps) {
+export default function ChosenColorList({ colors }: ChosenColorsProps) {
   const searchParams = useSearchParams();
 
   const idsParam: string = searchParams.get("ids") || "";

@@ -1,16 +1,13 @@
+import "server-only";
+import { cache } from "react";
 import { NextResponse } from "next/server";
 import { GoogleSpreadsheet } from "google-spreadsheet";
 import ColorModel from "./ColorModel";
 
+export const revalidate = 3600;
+
 export async function GET() {
-  const doc = new GoogleSpreadsheet(process.env.GOOGLE_DOC_ID as string, {
-    apiKey: process.env.GOOGLE_PRIVATE_KEY as string,
-  });
-
-  await doc.loadInfo();
-
-  const sheet = doc.sheetsByIndex[0];
-  const rows = await sheet.getRows();
+  const rows = await getSheetRows();
 
   const colors: ColorModel[] = rows.map((row) => ({
     isAvailable: row.get("Disponible") === "TRUE",
@@ -26,3 +23,16 @@ export async function GET() {
 
   return NextResponse.json(availableColors);
 }
+
+const getSheetRows = cache(async () => {
+  const doc = new GoogleSpreadsheet(process.env.GOOGLE_DOC_ID as string, {
+    apiKey: process.env.GOOGLE_PRIVATE_KEY as string,
+  });
+
+  await doc.loadInfo();
+
+  const sheet = doc.sheetsByIndex[0];
+  const rows = await sheet.getRows();
+
+  return rows;
+});

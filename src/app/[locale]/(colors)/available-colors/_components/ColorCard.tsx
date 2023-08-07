@@ -4,7 +4,7 @@ import { useMemo } from "react";
 import classNames from "classnames";
 import ColorModel from "../../../api/colors/ColorModel";
 import Nail from "../../Nail";
-import useSelectColor from "./useSelectColor";
+import useSelectColor from "../../../../../providers/useSelectColor";
 
 interface ColorCardProps {
   color: ColorModel;

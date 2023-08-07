@@ -31,6 +31,17 @@ export default {
       welcomeModal: {
         closeButton: "¡Entendido!",
       },
+      limitExceededModal: {
+        title: "Superaste el límite",
+        description:
+          "Puedes desmarcar los colores seleccionados para elegir uno nuevo.",
+        closeButton: "Ups... ¡Ok!",
+      },
+      controlBar: {
+        clearButton: "Limpiar",
+        "sendButton#one": "Enviar {count} color",
+        "sendButton#other": "Enviar {count} colores",
+      },
     },
     chosenColors: {
       title: "Colores elegidos",

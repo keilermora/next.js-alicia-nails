@@ -1,7 +1,8 @@
 {
-  "name": "alicia-nails",
+  "name": "alicia-nails-next.js",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://github.com/keilermora/next.js-alicia-nails#readme",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

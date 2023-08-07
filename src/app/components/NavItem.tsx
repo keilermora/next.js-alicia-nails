@@ -6,14 +6,13 @@ import classNames from "classnames";
 
 interface NavItemProps {
   label: string;
-  searchParams?: string;
   href: string;
 }
 
-export default function NavItem({ href, label, searchParams }: NavItemProps) {
+export default function NavItem({ href, label }: NavItemProps) {
   const pathname = usePathname();
 
-  const isActive = pathname === href;
+  const isActive = pathname.endsWith(href);
 
   const linkClasses = classNames(
     { "text-[var(--burnt-sienna)]": isActive },

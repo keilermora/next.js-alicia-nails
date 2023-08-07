@@ -1,12 +1,16 @@
 import "./globals.css";
 import { ReactNode } from "react";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Roboto } from "next/font/google";
 import Header from "@/src/app/components/Header";
 import Footer from "@/src/app/components/Footer";
-import I18nProvider from "@/src/providers/i18n-provider";
+import I18nProvider from "@/src/providers/I18nProvider";
+import SelectColorProvider from "@/src/providers/SelectColorProvider";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Roboto({
+  subsets: ["latin"],
+  weight: "400",
+});
 
 export const metadata: Metadata = {
   title: "Alicia Nails | Manicurista profesional",
@@ -23,12 +27,14 @@ export default async function RootLayout({ children, modal }: RootLayoutProps) {
     <html>
       <body className={inter.className}>
         <I18nProvider>
-          <Header />
-          <main>
-            {modal}
-            {children}
-          </main>
-          <Footer />
+          <SelectColorProvider>
+            <Header />
+            <main>
+              {modal}
+              {children}
+            </main>
+            <Footer />
+          </SelectColorProvider>
         </I18nProvider>
       </body>
     </html>

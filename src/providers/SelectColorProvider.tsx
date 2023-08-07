@@ -1,10 +1,19 @@
 "use client";
 
-import { ReactNode, createContext, useState } from "react";
+import {
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  createContext,
+  useState,
+} from "react";
 
 type SelectColorContextProps = {
   colorIds: string[];
+  clearSelectedColors: () => void;
   toggleSelectedColor: (selectedColorId: string) => void;
+  limitExceeded: boolean;
+  setLimitExceeded: Dispatch<SetStateAction<boolean>>;
 };
 
 export const SelectColorContext = createContext<SelectColorContextProps | null>(
@@ -17,6 +26,11 @@ export default function SelectColorProvider({
   children: ReactNode;
 }) {
   const [colorIds, setColorIds] = useState<string[]>([]);
+  const [limitExceeded, setLimitExceeded] = useState(false);
+
+  const clearSelectedColors = () => {
+    setColorIds([]);
+  };
 
   const toggleSelectedColor = (selectedColorId: string) => {
     const colorIndex = colorIds.findIndex(
@@ -30,12 +44,24 @@ export default function SelectColorProvider({
       newColorIds.splice(colorIndex, 1);
     }
 
-    newColorIds.sort();
-    setColorIds(newColorIds);
+    if (newColorIds.length > 10) {
+      setLimitExceeded(true);
+    } else {
+      newColorIds.sort();
+      setColorIds(newColorIds);
+    }
   };
 
   return (
-    <SelectColorContext.Provider value={{ colorIds, toggleSelectedColor }}>
+    <SelectColorContext.Provider
+      value={{
+        colorIds,
+        clearSelectedColors,
+        toggleSelectedColor,
+        limitExceeded,
+        setLimitExceeded,
+      }}
+    >
       {children}
     </SelectColorContext.Provider>
   );

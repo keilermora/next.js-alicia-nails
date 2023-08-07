@@ -1,7 +1,7 @@
-import ChosenColors from "./_components/ChosenColors";
+import { getScopedI18n } from "@/src/locales/server";
+import ChosenColorList from "./_components/ChosenColorList";
 import ColorModel from "@/src/app/api/colors/ColorModel";
 import getGreetingsMessage from "@/src/lib/get-greetings-message";
-import { getScopedI18n } from "@/src/locales/server";
 
 export default async function ChosenColorsPage() {
   const scopedT = await getScopedI18n("pages.chosenColors");
@@ -17,7 +17,7 @@ export default async function ChosenColorsPage() {
         {scopedT("description", { greetingsMessage: greetingsMessage })}
       </p>
 
-      <ChosenColors colors={colors} />
+      <ChosenColorList colors={colors} />
     </section>
   );
 }
